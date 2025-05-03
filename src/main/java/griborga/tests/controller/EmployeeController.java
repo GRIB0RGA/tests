@@ -3,13 +3,7 @@ package griborga.tests.controller;
 import griborga.tests.entity.Employee;
 import griborga.tests.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +17,12 @@ public class EmployeeController {
     @GetMapping("/{id}")
     public Employee getEmployee(@PathVariable Long id) {
         return service.fetchEmployeeById(id);
+    }
+
+
+    @PostMapping
+    public Employee createEmployee(@RequestBody Employee employee) {
+        return service.createEmployee(employee);
     }
 
     @PutMapping
